@@ -9,7 +9,7 @@
 #
 
 ifndef FFDROID_DIR
-FFDROID_DIR := $(call my-dir)
+FFDROID_DIR := $(FFMPEG_DIR)android
 endif
 
 include $(CLEAR_VARS)
@@ -55,9 +55,7 @@ LOCAL_PROPRIETARY_MODULE := true
 
 LOCAL_SRC_FILES := $(C_FILES) $(S_FILES)
 
-LOCAL_C_INCLUDES := \
-	$(FFMPEG_DIR)android/include \
-	$(FFMPEG_DIR)
+LOCAL_C_INCLUDES := $(SUBDIR) $(FFMPEG_DIR)
 
 LOCAL_EXPORT_C_INCLUDE_DIRS := $(LOCAL_C_INCLUDES)
 

@@ -5,7 +5,7 @@ ifeq ($(FFMPEG_2ND_ARCH), true)
 endif
 
 ifneq (($filter x86 x86_64,$(FFMPEG_ARCH)),)
-   include $(call my-dir)/config-$(FFMPEG_ARCH)-$(FFMPEG_ARCH_VARIANT).mak
+   include $(FFDROID_DIR)/config-$(FFMPEG_ARCH)-$(FFMPEG_ARCH_VARIANT).mak
 else
-   include $(call my-dir)/config-$(FFMPEG_ARCH_VARIANT).mak
+   include $(FFDROID_DIR)/config-$(FFMPEG_ARCH_VARIANT).mak
 endif
