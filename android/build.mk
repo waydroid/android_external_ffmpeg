@@ -61,19 +61,20 @@ LOCAL_EXPORT_C_INCLUDE_DIRS := $(LOCAL_C_INCLUDES)
 
 LOCAL_CFLAGS += \
 	-O3 -std=c99 -fno-math-errno -fno-signed-zeros -fomit-frame-pointer \
-	-Wno-pointer-to-int-cast -Wstrict-prototypes -Wempty-body -Wno-parentheses \
+	-Wno-pointer-to-int-cast -Wno-strict-prototypes -Wempty-body -Wno-parentheses \
 	-Wno-switch -Wno-format-zero-length -Wno-pointer-sign -Wno-unused-parameter \
 	-Wno-deprecated-declarations -Wno-missing-field-initializers -Wno-sign-compare \
 	-Wno-constant-conversion -Wno-incompatible-pointer-types-discards-qualifiers \
 	-Wno-initializer-overrides -Wno-sometimes-uninitialized \
 	-Wno-unneeded-internal-declaration -Wno-unused-function -Wno-absolute-value \
+	-Wno-expansion-to-defined -Wno-string-plus-int \
 	-Werror=format-security -Werror=implicit-function-declaration -Werror=missing-prototypes \
 	-Werror=return-type -Werror=vla -Wformat -Wno-maybe-uninitialized -fPIC
 
 LOCAL_ASFLAGS_x86 := -Pconfig-x86.asm
 LOCAL_ASFLAGS_x86_64 := -Pconfig-x86_64.asm
 
-LOCAL_LDFLAGS := -Wl,--no-fatal-warnings -Wl,-Bsymbolic
+LOCAL_LDFLAGS := -Wl,--no-fatal-warnings -Wl,-Bsymbolic -Wl,-z,notext
 
 LOCAL_CLANG_CFLAGS += -Wno-unknown-attributes
 LOCAL_CLANG_ASFLAGS += $(if $(filter x86,$(FFMPEG_ARCH_DIR)),,-no-integrated-as)
