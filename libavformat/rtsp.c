@@ -31,7 +31,7 @@
 #include "libavutil/random_seed.h"
 #include "libavutil/dict.h"
 #include "libavutil/opt.h"
-#include "libavutil/time.h"
+#include "libavutil/avtime.h"
 #include "avformat.h"
 #include "avio_internal.h"
 

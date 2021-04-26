@@ -41,7 +41,7 @@
 #include "libavutil/fifo.h"
 #include "libavutil/parseutils.h"
 #include "libavutil/samplefmt.h"
-#include "libavutil/time.h"
+#include "libavutil/avtime.h"
 #include "libavutil/bprint.h"
 #include "libavformat/avformat.h"
 #include "libavdevice/avdevice.h"

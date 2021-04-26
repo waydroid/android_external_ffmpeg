@@ -26,7 +26,7 @@
 #include "mf_utils.h"
 #include "libavutil/imgutils.h"
 #include "libavutil/opt.h"
-#include "libavutil/time.h"
+#include "libavutil/avtime.h"
 #include "codec_internal.h"
 #include "internal.h"
 #include "compat/w32dlfcn.h"

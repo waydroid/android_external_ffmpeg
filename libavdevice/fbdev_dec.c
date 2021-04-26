@@ -37,7 +37,7 @@
 #include "libavutil/internal.h"
 #include "libavutil/log.h"
 #include "libavutil/opt.h"
-#include "libavutil/time.h"
+#include "libavutil/avtime.h"
 #include "libavutil/parseutils.h"
 #include "libavutil/pixdesc.h"
 #include "libavformat/internal.h"

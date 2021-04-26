@@ -27,7 +27,7 @@
 #include "libavutil/bprint.h"
 #include "libavutil/internal.h"
 #include "libavutil/thread.h"
-#include "libavutil/time.h"
+#include "libavutil/avtime.h"
 
 #include "libavcodec/internal.h"
 

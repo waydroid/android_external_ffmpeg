@@ -32,7 +32,7 @@
 #endif
 
 #include "libavutil/avstring.h"
-#include "libavutil/time.h"
+#include "libavutil/avtime.h"
 #include "libavformat/avformat.h"
 
 #define FILENAME_BUF_SIZE 4096

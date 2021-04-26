@@ -19,7 +19,7 @@
 #include "config_components.h"
 
 #include "libavutil/opt.h"
-#include "libavutil/time.h"
+#include "libavutil/avtime.h"
 #include "avfilter.h"
 #include "formats.h"
 #include "internal.h"

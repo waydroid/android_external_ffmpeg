@@ -39,7 +39,7 @@
 
 #include "libavutil/attributes.h"
 #include "libavutil/common.h"
-#include "libavutil/time.h"
+#include "libavutil/avtime.h"
 
 typedef struct {
     TID tid;

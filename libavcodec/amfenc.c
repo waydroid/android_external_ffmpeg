@@ -31,7 +31,7 @@
 #endif
 #include "libavutil/mem.h"
 #include "libavutil/pixdesc.h"
-#include "libavutil/time.h"
+#include "libavutil/avtime.h"
 
 #include "amfenc.h"
 #include "encode.h"

@@ -43,7 +43,7 @@ extern "C" {
 #include "libavutil/internal.h"
 #include "libavutil/imgutils.h"
 #include "libavutil/intreadwrite.h"
-#include "libavutil/time.h"
+#include "libavutil/avtime.h"
 #include "libavutil/timecode.h"
 #include "libavutil/mathematics.h"
 #include "libavutil/reverse.h"

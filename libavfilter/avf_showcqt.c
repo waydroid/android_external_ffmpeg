@@ -25,7 +25,7 @@
 #include "libavutil/xga_font_data.h"
 #include "libavutil/eval.h"
 #include "libavutil/pixdesc.h"
-#include "libavutil/time.h"
+#include "libavutil/avtime.h"
 #include "avfilter.h"
 #include "internal.h"
 #include "lavfutils.h"

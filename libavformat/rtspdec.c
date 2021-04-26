@@ -25,7 +25,7 @@
 #include "libavutil/intreadwrite.h"
 #include "libavutil/mathematics.h"
 #include "libavutil/random_seed.h"
-#include "libavutil/time.h"
+#include "libavutil/avtime.h"
 #include "avformat.h"
 
 #include "internal.h"

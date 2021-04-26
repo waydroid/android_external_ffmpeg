@@ -26,7 +26,7 @@
 #include <stdlib.h>
 #include <string.h>
 
-#include "libavutil/time.h"
+#include "libavutil/avtime.h"
 
 static uint64_t rand64(void)
 {

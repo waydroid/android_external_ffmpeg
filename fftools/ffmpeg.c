@@ -60,7 +60,7 @@
 #include "libavutil/imgutils.h"
 #include "libavutil/timestamp.h"
 #include "libavutil/bprint.h"
-#include "libavutil/time.h"
+#include "libavutil/avtime.h"
 #include "libavutil/thread.h"
 #include "libavutil/threadmessage.h"
 #include "libavcodec/mathops.h"

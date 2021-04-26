@@ -35,7 +35,7 @@
 #include "libavformat/internal.h"
 #include "libavutil/internal.h"
 #include "libavutil/parseutils.h"
-#include "libavutil/time.h"
+#include "libavutil/avtime.h"
 #include "libavutil/imgutils.h"
 #include "avdevice.h"
 

@@ -40,7 +40,7 @@
 #include "libavutil/internal.h"
 #include "libavutil/lfg.h"
 #include "libavutil/mem_internal.h"
-#include "libavutil/time.h"
+#include "libavutil/avtime.h"
 
 #include "libavcodec/dct.h"
 #include "libavcodec/idctdsp.h"

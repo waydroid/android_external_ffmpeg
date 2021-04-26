@@ -30,7 +30,7 @@
 #include "dnn_filter_common.h"
 #include "formats.h"
 #include "internal.h"
-#include "libavutil/time.h"
+#include "libavutil/avtime.h"
 #include "libavutil/avstring.h"
 #include "libavutil/detection_bbox.h"
 

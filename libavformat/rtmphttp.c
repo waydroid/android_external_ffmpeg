@@ -27,7 +27,7 @@
 #include "libavutil/avstring.h"
 #include "libavutil/intfloat.h"
 #include "libavutil/opt.h"
-#include "libavutil/time.h"
+#include "libavutil/avtime.h"
 #include "internal.h"
 #include "http.h"
 #include "rtmp.h"

@@ -35,7 +35,7 @@
 #include "libavutil/mathematics.h"
 #include "libavutil/opt.h"
 #include "libavutil/pixdesc.h"
-#include "libavutil/time.h"
+#include "libavutil/avtime.h"
 #include "libavfilter/qsvvpp.h"
 
 #include "avfilter.h"

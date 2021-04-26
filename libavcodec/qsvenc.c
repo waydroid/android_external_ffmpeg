@@ -32,7 +32,7 @@
 #include "libavutil/hwcontext_qsv.h"
 #include "libavutil/mem.h"
 #include "libavutil/log.h"
-#include "libavutil/time.h"
+#include "libavutil/avtime.h"
 #include "libavutil/imgutils.h"
 #include "libavcodec/bytestream.h"
 

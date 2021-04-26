@@ -25,7 +25,7 @@
 #include "avformat.h"
 #include "libavutil/avstring.h"
 #include "libavutil/opt.h"
-#include "libavutil/time.h"
+#include "libavutil/avtime.h"
 #include "network.h"
 #include "url.h"
 #include "urldecode.h"

@@ -47,7 +47,7 @@
 #include "mem.h"
 #include "pixfmt.h"
 #include "pixdesc.h"
-#include "time.h"
+#include "avtime.h"
 #include "imgutils.h"
 
 #define QSV_VERSION_ATLEAST(MAJOR, MINOR)   \

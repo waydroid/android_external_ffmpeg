@@ -24,7 +24,7 @@
 #include "network.h"
 #include "libavutil/avstring.h"
 #include "libavutil/opt.h"
-#include "libavutil/time.h"
+#include "libavutil/avtime.h"
 
 #define ZMQ_STRERROR zmq_strerror(zmq_errno())
 

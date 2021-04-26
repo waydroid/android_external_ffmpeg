@@ -41,7 +41,7 @@
 #include "libavutil/parseutils.h"
 #include "libavutil/pixfmt.h"
 #include "libavutil/threadmessage.h"
-#include "libavutil/time.h"
+#include "libavutil/avtime.h"
 
 /* This image format is available on all Android devices
  * supporting the Camera2 API */

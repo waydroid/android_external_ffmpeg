@@ -28,7 +28,7 @@
 #include "libavutil/log.h"
 #include "libavutil/fifo.h"
 #include "libavutil/opt.h"
-#include "libavutil/time.h"
+#include "libavutil/avtime.h"
 #include "libavcodec/avcodec.h"
 #include "libavformat/avformat.h"
 #include "libavformat/internal.h"

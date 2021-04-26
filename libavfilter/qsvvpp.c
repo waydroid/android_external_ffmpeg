@@ -25,7 +25,7 @@
 #include "libavutil/mathematics.h"
 #include "libavutil/hwcontext.h"
 #include "libavutil/hwcontext_qsv.h"
-#include "libavutil/time.h"
+#include "libavutil/avtime.h"
 #include "libavutil/pixdesc.h"
 
 #include "internal.h"

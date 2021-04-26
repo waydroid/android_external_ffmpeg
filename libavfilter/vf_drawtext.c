@@ -51,7 +51,7 @@
 #include "libavutil/opt.h"
 #include "libavutil/random_seed.h"
 #include "libavutil/parseutils.h"
-#include "libavutil/time.h"
+#include "libavutil/avtime.h"
 #include "libavutil/timecode.h"
 #include "libavutil/time_internal.h"
 #include "libavutil/tree.h"

@@ -28,7 +28,7 @@
 #include "libavutil/mem.h"
 #include "libavutil/log.h"
 #include "libavutil/pixfmt.h"
-#include "libavutil/time.h"
+#include "libavutil/avtime.h"
 #include "libavutil/timestamp.h"
 
 #include "avcodec.h"
