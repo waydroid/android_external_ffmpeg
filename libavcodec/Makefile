@@ -1276,6 +1276,7 @@ TESTPROGS-$(CONFIG_SNOW_ENCODER)          += snowenc
 
 TESTOBJS = dctref.o
 
+ifndef CONFIG_ANDROID
 TOOLS = fourcc2pixfmt
 
 HOSTPROGS = aacps_tablegen                                              \
@@ -1334,3 +1335,4 @@ $(SUBDIR)pcm.o: $(SUBDIR)pcm_tables.h
 $(SUBDIR)qdm2.o: $(SUBDIR)qdm2_tables.h
 $(SUBDIR)sinewin.o: $(SUBDIR)sinewin_tables.h
 endif
+endif # CONFIG_ANDROID
