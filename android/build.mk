@@ -67,6 +67,12 @@ LOCAL_CFLAGS += \
 	-Wno-parentheses -Wno-switch -Wno-format-zero-length -Wno-pointer-sign \
 	-Wno-unused-const-variable -Wno-bool-operation -Wno-deprecated-declarations \
 	-Wno-unused-variable
+# Additional flags required for AOSP/clang
+LOCAL_CFLAGS += \
+	-Wno-unused-parameter -Wno-missing-field-initializers \
+	-Wno-incompatible-pointer-types-discards-qualifiers -Wno-sometimes-uninitialized \
+	-Wno-unneeded-internal-declaration -Wno-initializer-overrides -Wno-string-plus-int \
+	-Wno-absolute-value -Wno-constant-conversion
 
 LOCAL_ASFLAGS_x86 := -Pconfig-x86.asm
 LOCAL_ASFLAGS_x86_64 := -Pconfig-x86_64.asm
