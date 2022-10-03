@@ -19,6 +19,10 @@ LOCAL_C_INCLUDES +=		\
 LOCAL_SHARED_LIBRARIES +=	\
 	libz \
 
+ifeq ($(CONFIG_VAAPI),yes)
+  LOCAL_SHARED_LIBRARIES += libva
+endif
+
 ifneq ($(ARCH_ARM_HAVE_NEON),)
   LOCAL_SRC_FILES += neon/mpegvideo.c
 endif
@@ -34,6 +38,10 @@ LOCAL_C_INCLUDES +=		\
 
 LOCAL_SHARED_LIBRARIES +=	\
 	libz \
+
+ifeq ($(CONFIG_VAAPI),yes)
+  LOCAL_SHARED_LIBRARIES += libva
+endif
 
 ifneq ($(ARCH_ARM_HAVE_NEON),)
   LOCAL_SRC_FILES += neon/mpegvideo.c
