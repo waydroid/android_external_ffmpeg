@@ -16,7 +16,8 @@ include $(LOCAL_PATH)/../android/build.mk
 ifeq ($(CONFIG_VAAPI),yes)
 LOCAL_SHARED_LIBRARIES +=	\
 	libva \
-	libva-android
+	libva-android \
+	libdrm
 endif
 
 LOCAL_C_INCLUDES += bionic/libc/include
@@ -33,7 +34,8 @@ include $(LOCAL_PATH)/../android/build.mk
 ifeq ($(CONFIG_VAAPI),yes)
 LOCAL_SHARED_LIBRARIES +=	\
 	libva \
-	libva-android
+	libva-android \
+	libdrm
 endif
 
 LOCAL_C_INCLUDES += bionic/libc/include

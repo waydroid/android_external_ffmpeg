@@ -6964,6 +6964,7 @@ if enabled x86; then
             hevc_vaapi_hwaccel_deps="vaapi"
             vp9_vaapi_hwaccel_deps="vaapi"
             enable vaapi vaapi_1 vaapi_android
+            enable libdrm libdrm_getfb2 linux_dma_buf_h
             ;&
         *)
             disable ffnvcodec cuvid nvdec nvenc
