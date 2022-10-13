@@ -1306,6 +1306,7 @@ static int vaapi_map_to_drm_esh(AVHWFramesContext *hwfc, AVFrame *dst,
                "%d (%s).\n", surface_id, vas, vaErrorStr(vas));
         return AVERROR(EIO);
     }
+    vaSyncSurface(hwctx->display, surface_id);
 
     drm_desc = av_mallocz(sizeof(*drm_desc));
     if (!drm_desc) {
