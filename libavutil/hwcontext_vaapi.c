@@ -1046,7 +1046,7 @@ static int vaapi_map_from_drm(AVHWFramesContext *src_fc, AVFrame *dst,
     int err, i, j;
 
 #if !VA_CHECK_VERSION(1, 1, 0)
-    unsigned long buffer_handle;
+    uintptr_t buffer_handle;
     VASurfaceAttribExternalBuffers buffer_desc;
     VASurfaceAttrib attrs[2] = {
         {
@@ -1163,7 +1163,7 @@ static int vaapi_map_from_drm(AVHWFramesContext *src_fc, AVFrame *dst,
 
     if (!use_prime2 || vas != VA_STATUS_SUCCESS) {
         int k;
-        unsigned long buffer_handle;
+        uintptr_t buffer_handle;
         VASurfaceAttribExternalBuffers buffer_desc;
         VASurfaceAttrib buffer_attrs[2] = {
             {
@@ -1484,7 +1484,7 @@ static int vaapi_map_to_drm_abh(AVHWFramesContext *hwfc, AVFrame *dst,
         goto fail_derived;
     }
 
-    av_log(hwfc, AV_LOG_DEBUG, "DRM PRIME fd is %ld.\n",
+    av_log(hwfc, AV_LOG_DEBUG, "DRM PRIME fd is %" PRIdPTR ".\n",
            mapping->buffer_info.handle);
 
     mapping->drm_desc.nb_objects = 1;

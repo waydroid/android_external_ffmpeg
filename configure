@@ -6965,6 +6965,7 @@ if enabled x86; then
             vp9_vaapi_hwaccel_deps="vaapi"
             enable vaapi vaapi_1 vaapi_android
             enable libdrm libdrm_getfb2 linux_dma_buf_h
+            enabled x86_32 && disable ebx_available
             ;&
         *)
             disable ffnvcodec cuvid nvdec nvenc

@@ -1381,7 +1381,7 @@
 #ifdef HAVE_EBX_AVAILABLE
 #undef HAVE_EBX_AVAILABLE
 #endif
-#define HAVE_EBX_AVAILABLE 1
+#define HAVE_EBX_AVAILABLE 0
 #ifdef HAVE_GNU_AS
 #undef HAVE_GNU_AS
 #endif
