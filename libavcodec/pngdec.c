@@ -322,7 +322,7 @@ void ff_png_filter_row(PNGDSPContext *dsp, uint8_t *dst, int filter_type,
 static void deloco_ ## NAME(TYPE *dst, int size, int alpha) \
 { \
     int i; \
-    for (i = 0; i < size; i += 3 + alpha) { \
+    for (i = 0; i < size - 2; i += 3 + alpha) { \
         int g = dst [i + 1]; \
         dst[i + 0] += g; \
         dst[i + 2] += g; \
@@ -640,6 +640,8 @@ static int decode_idat_chunk(AVCodecContext *avctx, PNGDecContext *s,
     int ret;
     size_t byte_depth = s->bit_depth > 8 ? 2 : 1;
 
+    if (!p)
+        return AVERROR_INVALIDDATA;
     if (!(s->hdr_state & PNG_IHDR)) {
         av_log(avctx, AV_LOG_ERROR, "IDAT without IHDR\n");
         return AVERROR_INVALIDDATA;
@@ -876,7 +878,7 @@ static int decode_trns_chunk(AVCodecContext *avctx, PNGDecContext *s,
     return 0;
 }
 
-static int decode_iccp_chunk(PNGDecContext *s, GetByteContext *gb, AVFrame *f)
+static int decode_iccp_chunk(PNGDecContext *s, GetByteContext *gb)
 {
     int ret, cnt = 0;
     AVBPrint bp;
@@ -1231,6 +1233,7 @@ static int decode_frame_common(AVCodecContext *avctx, PNGDecContext *s,
                 }
                 av_log(avctx, AV_LOG_ERROR, ", skipping\n");
                 bytestream2_skip(&s->gb, length + 8); /* tag */
+                continue;
             }
         }
         tag = bytestream2_get_le32(&s->gb);
@@ -1312,7 +1315,7 @@ static int decode_frame_common(AVCodecContext *avctx, PNGDecContext *s,
             break;
         }
         case MKTAG('i', 'C', 'C', 'P'): {
-            if ((ret = decode_iccp_chunk(s, &gb_chunk, p)) < 0)
+            if ((ret = decode_iccp_chunk(s, &gb_chunk)) < 0)
                 goto fail;
             break;
         }
@@ -1356,6 +1359,9 @@ static int decode_frame_common(AVCodecContext *avctx, PNGDecContext *s,
         }
     }
 exit_loop:
+
+    if (!p)
+        return AVERROR_INVALIDDATA;
 
     if (avctx->codec_id == AV_CODEC_ID_PNG &&
         avctx->skip_frame == AVDISCARD_ALL) {
@@ -1595,7 +1601,7 @@ static int decode_frame_apng(AVCodecContext *avctx, AVFrame *p,
         if ((ret = inflateReset(&s->zstream.zstream)) != Z_OK)
             return AVERROR_EXTERNAL;
         bytestream2_init(&s->gb, avctx->extradata, avctx->extradata_size);
-        if ((ret = decode_frame_common(avctx, s, p, avpkt)) < 0)
+        if ((ret = decode_frame_common(avctx, s, NULL, avpkt)) < 0)
             return ret;
     }
 
