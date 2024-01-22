@@ -34,6 +34,7 @@
 #define MULT(x, m) ((x) * (m))
 #define SCALE_TYPE float
 typedef float TXSample;
+typedef float TXUSample;
 typedef AVComplexFloat TXComplex;
 #elif defined(TX_DOUBLE)
 #define TX_TAB(x) x ## _double
@@ -45,6 +46,7 @@ typedef AVComplexFloat TXComplex;
 #define MULT(x, m) ((x) * (m))
 #define SCALE_TYPE double
 typedef double TXSample;
+typedef double TXUSample;
 typedef AVComplexDouble TXComplex;
 #elif defined(TX_INT32)
 #define TX_TAB(x) x ## _int32
@@ -56,6 +58,7 @@ typedef AVComplexDouble TXComplex;
 #define MULT(x, m) (((((int64_t)(x)) * (int64_t)(m)) + 0x40000000) >> 31)
 #define SCALE_TYPE float
 typedef int32_t TXSample;
+typedef uint32_t TXUSample;
 typedef AVComplexInt32 TXComplex;
 #else
 typedef void TXComplex;
@@ -98,6 +101,12 @@ typedef void TXComplex;
 
 #define FOLD(a, b) ((a) + (b))
 
+#define BF(x, y, a, b)  \
+    do {                \
+        x = (a) - (b);  \
+        y = (a) + (b);  \
+    } while (0)
+
 #elif defined(TX_INT32)
 
 /* Properly rounds the result */
@@ -128,13 +137,13 @@ typedef void TXComplex;
 
 #define FOLD(x, y) ((int32_t)((x) + (unsigned)(y) + 32) >> 6)
 
-#endif /* TX_INT32 */
-
 #define BF(x, y, a, b)  \
     do {                \
-        x = (a) - (b);  \
-        y = (a) + (b);  \
+        x = (a) - (unsigned)(b);  \
+        y = (a) + (unsigned)(b);  \
     } while (0)
+
+#endif /* TX_INT32 */
 
 #define CMUL3(c, a, b) CMUL((c).re, (c).im, (a).re, (a).im, (b).re, (b).im)
 

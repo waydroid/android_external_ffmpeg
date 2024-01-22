@@ -242,6 +242,8 @@ void avcodec_align_dimensions2(AVCodecContext *s, int *width, int *height,
     case AV_PIX_FMT_GBRAP16BE:
         w_align = 16; //FIXME assume 16 pixel per macroblock
         h_align = 16 * 2; // interlaced needs 2 macroblocks height
+        if (s->codec_id == AV_CODEC_ID_BINKVIDEO)
+            w_align = 16*2;
         break;
     case AV_PIX_FMT_YUV411P:
     case AV_PIX_FMT_YUVJ411P:
@@ -314,12 +316,13 @@ void avcodec_align_dimensions2(AVCodecContext *s, int *width, int *height,
     }
 
     if (s->codec_id == AV_CODEC_ID_IFF_ILBM) {
-        w_align = FFMAX(w_align, 8);
+        w_align = FFMAX(w_align, 16);
     }
 
     *width  = FFALIGN(*width, w_align);
     *height = FFALIGN(*height, h_align);
     if (s->codec_id == AV_CODEC_ID_H264 || s->lowres ||
+        s->codec_id == AV_CODEC_ID_VC1  || s->codec_id == AV_CODEC_ID_WMV3 ||
         s->codec_id == AV_CODEC_ID_VP5  || s->codec_id == AV_CODEC_ID_VP6 ||
         s->codec_id == AV_CODEC_ID_VP6F || s->codec_id == AV_CODEC_ID_VP6A
     ) {
@@ -331,6 +334,9 @@ void avcodec_align_dimensions2(AVCodecContext *s, int *width, int *height,
         // it requires a temporary area large enough to hold a 21x21 block,
         // increasing witdth ensure that the temporary area is large enough,
         // the next rounded up width is 32
+        *width = FFMAX(*width, 32);
+    }
+    if (s->codec_id == AV_CODEC_ID_SVQ3) {
         *width = FFMAX(*width, 32);
     }
 
@@ -643,9 +649,9 @@ static int get_audio_frame_duration(enum AVCodecID id, int sr, int ch, int ba,
     if (sr > 0) {
         /* calc from sample rate */
         if (id == AV_CODEC_ID_TTA)
-            return 256 * sr / 245;
+            return 256ll * sr / 245;
         else if (id == AV_CODEC_ID_DST)
-            return 588 * sr / 44100;
+            return 588ll * sr / 44100;
         else if (id == AV_CODEC_ID_BINKAUDIO_DCT) {
             if (sr / 22050 > 22)
                 return 0;

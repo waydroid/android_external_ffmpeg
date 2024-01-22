@@ -1083,8 +1083,9 @@ static av_cold void nvenc_setup_rate_control(AVCodecContext *avctx)
 
         av_log(avctx, AV_LOG_VERBOSE, "CQ(%d) mode enabled.\n", tmp_quality);
 
-        //CQ mode shall discard avg bitrate & honor max bitrate;
+        // CQ mode shall discard avg bitrate/vbv buffer size and honor only max bitrate
         ctx->encode_config.rcParams.averageBitRate = avctx->bit_rate = 0;
+        ctx->encode_config.rcParams.vbvBufferSize = avctx->rc_buffer_size = 0;
         ctx->encode_config.rcParams.maxBitRate = avctx->rc_max_rate;
     }
 }
@@ -2031,7 +2032,7 @@ static int nvenc_set_timestamp(AVCodecContext *avctx,
     pkt->pts = params->outputTimeStamp;
     pkt->dts = timestamp_queue_dequeue(ctx->timestamp_list);
 
-    pkt->dts -= FFMAX(ctx->encode_config.frameIntervalP - 1, 0) * FFMAX(avctx->ticks_per_frame, 1);
+    pkt->dts -= FFMAX(ctx->encode_config.frameIntervalP - 1, 0) * FFMAX(avctx->ticks_per_frame, 1) * FFMAX(avctx->time_base.num, 1);
 
     return 0;
 }
